@@ -37,3 +37,13 @@ export async function deleteLocalFiles(files: Array<string>) {
     fs.unlinkSync(file);
   }
 }
+
+export function validateUrl(url: string) {
+  console.log("validate url: ", url);
+  let expression = '^((ft|htt)ps?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$';
+  let regex = new RegExp(expression);
+  if (url !== null || url !== '' || url.match(regex))
+    return true;
+  else
+    return false;
+}
