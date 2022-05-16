@@ -39,8 +39,8 @@ import {filterImageFromURL, deleteLocalFiles, validateUrl} from './util/util';
         deleteLocalFiles([result]);
       });
     }
-    catch (error: any) {
-      if(error.message == 'Could not find MIME for Buffer <null>')
+    catch (error) {
+      if((error as Error).message == 'Could not find MIME for Buffer <null>')
         res.status(422).send("Image can not be processed");
 
       res.status(500).send("Unable to process your request");
